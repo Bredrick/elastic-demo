@@ -39,8 +39,7 @@ Write-Host "Changing $esOptions"
     $_ -replace '#cluster.name: my-application', 'cluster.name: es-test-cluster' `
        -replace '#node.name: node-1', "node.name: $env:computername" `
        -replace '#network.host: 192.168.0.1', "network.host: $ip" `
-       -replace '
-#discovery.zen.ping.unicast.hosts: \["host1", "host2"\]', "
+       -replace '#discovery.zen.ping.unicast.hosts: \["host1", "host2"\]', "
 discovery.zen.ping.unicast.hosts: [""$target""]" `
        -replace '#discovery.zen.minimum_master_nodes: 3', "discovery.zen.minimum_master_nodes: 1" `
     } | Set-Content $esOptions
